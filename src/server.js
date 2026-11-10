@@ -1,19 +1,20 @@
+import "dotenv/config";
+import app from "./app.js";
+import connectDB from "./config/db.js";
 
-const express = require("express");
+const PORT = process.env.PORT || 5000;
 
-const app = express();
+const startServer = async () => {
+  try {
+    await connectDB();
 
-const PORT = 5000;
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Server startup failed:", error.message);
+    process.exit(1);
+  }
+};
 
-// Middleware
-app.use(express.json());
-
-// Basic route
-app.get("/", (req, res) => {
-  res.send("Hackathon Registration Server is Running!");
-});
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+startServer();
