@@ -7,77 +7,77 @@ Backend
 - [x] Install Express & Nodemon
 - [x] Basic Express Server
 - [x] Separate app.js and server.js
-- [ ] Configure Environment Variables
-- [ ] Configure .gitignore and .env.example
-- [ ] Finalize Modular Folder Structure
+- [x] Configure Environment Variables
+- [x] Configure .gitignore and .env.example
+- [x] Finalize Modular Folder Structure
 
 Phase 2 — Database Setup
-- [ ] Create MongoDB Atlas Database
-- [ ] Install Mongoose
-- [ ] Create Database Connection (config/db.js)
-- [ ] Connect MongoDB with Server
-- [ ] Test Database Connection
+- [x] Create MongoDB Atlas Database
+- [x] Install Mongoose
+- [x] Create Database Connection (config/db.js)
+- [x] Connect MongoDB with Server
+- [x] Test Database Connection
 
 Phase 3 — Application Architecture
-- [ ] Create API Versioning (/api/v1)
-- [ ] Configure Main Router
-- [ ] Create Feature-based Modules
-- [ ] Create Controller Layer
-- [ ] Create Service Layer
-- [ ] Create Model Layer
-- [ ] Create Reusable Utilities
-- [ ] Centralized Error Handling
-- [ ] 404 Not Found Handler
+- [] Create API Versioning (/api/v1)
+- [] Configure Main Router
+- [] Create Feature-based Modules
+- [] Create Controller Layer
+- [] Create Service Layer
+- [] Create Model Layer
+- [] Create Reusable Utilities
+- [] Centralized Error Handling
+- [] 404 Not Found Handler
 
 Phase 4 — Authentication System
-- [ ] Create User Model
-- [ ] User Signup API
-- [ ] Password Hashing with bcrypt
-- [ ] Generate 6-digit OTP
-- [ ] Send OTP using Nodemailer
-- [ ] OTP Expiration (10 Minutes)
-- [ ] OTP Verification API
-- [ ] JWT Token Generation
-- [ ] User Login API
-- [ ] Authentication Middleware
-- [ ] Protected Routes
-- [ ] Get Current User API
+- [] Create User Model
+- [] User Signup API
+- [] Password Hashing with bcrypt
+- [] Generate 6-digit OTP
+- [] Send OTP using Nodemailer
+- [] OTP Expiration (10 Minutes)
+- [] OTP Verification API
+- [] JWT Token Generation
+- [] User Login API
+- [] Authentication Middleware
+- [] Protected Routes
+- [] Get Current User API
 
 Phase 5 — Hackathon Registration
-- [ ] Create Registration Model
-- [ ] Registration API
-- [ ] Get My Registration API
-- [ ] Get All Registrations API (if required)
-- [ ] Update Registration API
-- [ ] Delete Registration API
-- [ ] Validate Registration Data
-- [ ] Prevent Duplicate Registration
+- [] Create Registration Model
+- [] Registration API
+- [] Get My Registration API
+- [] Get All Registrations API (if required)
+- [] Update Registration API
+- [] Delete Registration API
+- [] Validate Registration Data
+- [] Prevent Duplicate Registration
 
 Phase 6 — Security & Validation
-- [ ] Request Validation
-- [ ] CORS Configuration
-- [ ] Helmet Security Headers
-- [ ] Rate Limiting
-- [ ] Secure Environment Variables
-- [ ] Consistent API Response Format
-- [ ] Handle Unexpected Errors
+- [] Request Validation
+- [] CORS Configuration
+- [] Helmet Security Headers
+- [] Rate Limiting
+- [] Secure Environment Variables
+- [] Consistent API Response Format
+- [] Handle Unexpected Errors
 
 Phase 7 — API Testing
-- [ ] Test Signup
-- [ ] Test OTP Verification
-- [ ] Test Login
-- [ ] Test JWT Authentication
-- [ ] Test Registration CRUD
-- [ ] Test Invalid Requests
-- [ ] Test Unauthorized Requests
-- [ ] Test Database Errors
+- [] Test Signup
+- [] Test OTP Verification
+- [] Test Login
+- [] Test JWT Authentication
+- [] Test Registration CRUD
+- [] Test Invalid Requests
+- [] Test Unauthorized Requests
+- [] Test Database Errors
 
 Phase 8 — Deployment & Submission
-- [ ] Prepare Production Environment
-- [ ] Deploy Backend
-- [ ] Configure Production Database
-- [ ] Configure Environment Variables
-- [ ] Test Live API
-- [ ] Update README.md
-- [ ] Document API Endpoints
-- [ ] Final GitHub Push
+- [] Prepare Production Environment
+- [] Deploy Backend
+- [] Configure Production Database
+- [] Configure Environment Variables
+- [] Test Live API
+- [] Update README.md
+- [] Document API Endpoints
+- [] Final GitHub Push
