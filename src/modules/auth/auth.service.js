@@ -41,4 +41,15 @@ const signupUser = async (userData) => {
   };
 };
 
-export { signupUser };
+
+
+
+const getAllUsers = async () => {
+  const users = await User.find().select(
+    "fullName email isVerified createdAt"
+  );
+
+  return users;
+};
+
+export { signupUser, getAllUsers };
