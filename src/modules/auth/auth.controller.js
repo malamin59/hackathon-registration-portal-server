@@ -1,12 +1,11 @@
-import { getAllUsers, verifyOtp } from "./auth.service.js";
+import { getAllUsers, loginUser, verifyOtp } from "./auth.service.js";
 
 import { signupUser } from "./auth.service.js";
 
 const signup = async (req, res, next) => {
   try {
 
-
-    const result = await signupUser(req.body);
+   const result = await signupUser(req.body);
 
     res.status(201).json({
       success: true,
@@ -17,8 +16,6 @@ const signup = async (req, res, next) => {
     next(error);
   }
 };
-
-
 
 const verifyEmailOtp = async (req, res, next) => {
   try {
@@ -40,6 +37,22 @@ const verifyEmailOtp = async (req, res, next) => {
   }
 };
 
+// Login Controller
+const login = async (req, res, next) => {
+  try {
+    const result = await loginUser(req.body);
+
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 
 const getUsers = async (req, res) => {
   try {
@@ -60,4 +73,4 @@ const getUsers = async (req, res) => {
 };
 
 
-export { signup, getUsers, verifyEmailOtp};
+export { signup, getUsers, verifyEmailOtp, login};

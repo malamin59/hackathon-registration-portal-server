@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import User from "./auth.model.js";
 import crypto from "crypto";
 import { sendEmail } from "./email.service.js";
-
+import jwt from "jsonwebtoken";
 const signupUser = async (userData) => {
   const { fullName, email, password, confirmPassword } = userData;
 
@@ -114,4 +114,48 @@ const getAllUsers = async () => {
   return users;
 };
 
-export { signupUser, getAllUsers, verifyOtp };
+/* LOGIN SERVICE  */
+
+const loginUser = async ({ email, password }) => {
+  if (!email || !password) {
+    throw new Error("Email and password are required");
+  }
+
+  const user = await User.findOne({
+    email: email.toLowerCase(),
+  }).select("+password");
+
+  if (!user) {
+    throw new Error("Invalid email or password");
+  }
+
+  if (!user.isVerified) {
+    throw new Error("Please verify your email first");
+  }
+
+  const isPasswordValid = await bcrypt.compare(
+    password,
+    user.password
+  );
+
+  if (!isPasswordValid) {
+    throw new Error("Invalid email or password");
+  }
+
+  const token = jwt.sign(
+    { userId: user._id },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || "1d" }
+  );
+
+  return {
+    userId: user._id,
+    fullName: user.fullName,
+    email: user.email,
+    token,
+  };
+};
+
+
+
+export { signupUser, getAllUsers, verifyOtp, loginUser };
