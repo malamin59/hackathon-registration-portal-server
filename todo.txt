@@ -19,9 +19,9 @@ Phase 2 — Database Setup
 - [x] Test Database Connection
 
 Phase 3 — Application Architecture
-- [] Create API Versioning (/api/v1)
-- [] Configure Main Router
-- [] Create Feature-based Modules
+- [x] Create API Versioning (/api/v1)
+- [x] Configure Main Router
+- [x] Create Feature-based Modules
 - [] Create Controller Layer
 - [] Create Service Layer
 - [] Create Model Layer
