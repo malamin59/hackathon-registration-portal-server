@@ -1,16 +1,16 @@
+import User from "./auth.model.js";
 import { getAllUsers, loginUser, verifyOtp } from "./auth.service.js";
 
 import { signupUser } from "./auth.service.js";
 
 const signup = async (req, res, next) => {
   try {
-
-   const result = await signupUser(req.body);
+    const result = await signupUser(req.body);
 
     res.status(201).json({
       success: true,
       message: "User registered successfully",
-      data: result
+      data: result,
     });
   } catch (error) {
     next(error);
@@ -52,7 +52,27 @@ const login = async (req, res, next) => {
   }
 };
 
-
+// Get Current Logged-in User
+const getMe = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.userId).select(
+      "fullName email isVerified createdAt",
+    );
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "Profile fetched successfully",
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 const getUsers = async (req, res) => {
   try {
@@ -72,5 +92,4 @@ const getUsers = async (req, res) => {
   }
 };
 
-
-export { signup, getUsers, verifyEmailOtp, login};
+export { signup, getUsers, verifyEmailOtp, login, getMe };

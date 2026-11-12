@@ -55,7 +55,6 @@ const signupUser = async (userData) => {
     `,
   );
 
-
   // Return response
   return {
     userId: user._id,
@@ -65,48 +64,48 @@ const signupUser = async (userData) => {
   };
 };
 
-  const verifyOtp = async (userId, otp) => {
-    // Find user and include hidden OTP fields
-    const user = await User.findById(userId).select("+otpHash +otpExpiresAt");
+const verifyOtp = async (userId, otp) => {
+  // Find user and include hidden OTP fields
+  const user = await User.findById(userId).select("+otpHash +otpExpiresAt");
 
-    if (!user) {
-      throw new Error("User not found");
-    }
+  if (!user) {
+    throw new Error("User not found");
+  }
 
-    if (user.isVerified) {
-      throw new Error("Email already verified");
-    }
+  if (user.isVerified) {
+    throw new Error("Email already verified");
+  }
 
-    if (!user.otpHash || !user.otpExpiresAt) {
-      throw new Error("OTP not found. Please request a new OTP");
-    }
+  if (!user.otpHash || !user.otpExpiresAt) {
+    throw new Error("OTP not found. Please request a new OTP");
+  }
 
-    // Check OTP expiration
-    if (user.otpExpiresAt < new Date()) {
-      throw new Error("OTP expired. Please request a new OTP");
-    }
+  // Check OTP expiration
+  if (user.otpExpiresAt < new Date()) {
+    throw new Error("OTP expired. Please request a new OTP");
+  }
 
-    // Compare OTP
-    const isOtpValid = await bcrypt.compare(otp, user.otpHash);
+  // Compare OTP
+  const isOtpValid = await bcrypt.compare(otp, user.otpHash);
 
-    if (!isOtpValid) {
-      throw new Error("Invalid OTP");
-    }
+  if (!isOtpValid) {
+    throw new Error("Invalid OTP");
+  }
 
-    // Verify email and remove OTP
-    user.isVerified = true;
-    user.otpHash = undefined;
-    user.otpExpiresAt = undefined;
+  // Verify email and remove OTP
+  user.isVerified = true;
+  user.otpHash = undefined;
+  user.otpExpiresAt = undefined;
 
-    await user.save();
+  await user.save();
 
-    return {
-      userId: user._id,
-      email: user.email,
-      isVerified: user.isVerified,
-      message: "Email verified successfully",
-    };
+  return {
+    userId: user._id,
+    email: user.email,
+    isVerified: user.isVerified,
+    message: "Email verified successfully",
   };
+};
 
 const getAllUsers = async () => {
   const users = await User.find().select("fullName email isVerified createdAt");
@@ -133,20 +132,15 @@ const loginUser = async ({ email, password }) => {
     throw new Error("Please verify your email first");
   }
 
-  const isPasswordValid = await bcrypt.compare(
-    password,
-    user.password
-  );
+  const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     throw new Error("Invalid email or password");
   }
 
-  const token = jwt.sign(
-    { userId: user._id },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRES_IN || "1d" }
-  );
+  const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN || "1d",
+  });
 
   return {
     userId: user._id,
@@ -155,7 +149,5 @@ const loginUser = async ({ email, password }) => {
     token,
   };
 };
-
-
 
 export { signupUser, getAllUsers, verifyOtp, loginUser };
