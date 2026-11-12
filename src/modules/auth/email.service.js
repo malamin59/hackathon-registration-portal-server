@@ -1,4 +1,3 @@
-
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
@@ -11,7 +10,7 @@ const transporter = nodemailer.createTransport({
 
 const sendEmail = async (to, subject, html) => {
   await transporter.sendMail({
-    from: process.env.EMAIL_USER,
+    from: `"Code-a-Nova" <${process.env.EMAIL_USER}>`,
     to,
     subject,
     html,
@@ -26,6 +25,5 @@ const verifyEmailConnection = async () => {
     console.error("Email configuration error:", error.message);
   }
 };
-
 
 export { sendEmail, verifyEmailConnection };

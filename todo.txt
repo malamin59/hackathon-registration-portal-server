@@ -46,7 +46,7 @@ Phase 4 — Authentication System
 Phase 5 — Hackathon Registration
 - [x] Create Registration Model
 - [x] Registration API
-- [] Get My Registration API
+- [x] Get My Registration API
 - [] Get All Registrations API (if required)
 - [] Update Registration API
 - [] Delete Registration API
