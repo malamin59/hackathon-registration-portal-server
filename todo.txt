@@ -22,30 +22,30 @@ Phase 3 — Application Architecture
 - [x] Create API Versioning (/api/v1)
 - [x] Configure Main Router
 - [x] Create Feature-based Modules
-- [] Create Controller Layer
-- [] Create Service Layer
-- [] Create Model Layer
-- [] Create Reusable Utilities
-- [] Centralized Error Handling
-- [] 404 Not Found Handler
+- [X] Create Controller Layer
+- [X] Create Service Layer
+- [X] Create Model Layer
+- [X] Create Reusable Utilities
+- [X] Centralized Error Handling
+- [X] 404 Not Found Handler
 
 Phase 4 — Authentication System
-- [] Create User Model
-- [] User Signup API
-- [] Password Hashing with bcrypt
-- [] Generate 6-digit OTP
-- [] Send OTP using Nodemailer
-- [] OTP Expiration (10 Minutes)
-- [] OTP Verification API
-- [] JWT Token Generation
-- [] User Login API
-- [] Authentication Middleware
-- [] Protected Routes
-- [] Get Current User API
+- [x] Create User Model
+- [x] User Signup API
+- [x] Password Hashing with bcrypt
+- [x] Generate 6-digit OTP
+- [x] Send OTP using Nodemailer
+- [x] OTP Expiration (10 Minutes)
+- [x] OTP Verification API
+- [x] JWT Token Generation
+- [x] User Login API
+- [x] Authentication Middleware
+- [x] Protected Routes
+- [x] Get Current User API
 
 Phase 5 — Hackathon Registration
-- [] Create Registration Model
-- [] Registration API
+- [x] Create Registration Model
+- [x] Registration API
 - [] Get My Registration API
 - [] Get All Registrations API (if required)
 - [] Update Registration API

@@ -5,4 +5,9 @@ const createRegistration = async (registrationData) => {
   return registration;
 };
 
-export { createRegistration };
+const getRegistration = async (userId) => {
+  const registration = await Registration.find({ user: userId });
+  return registration;
+};
+
+export { createRegistration, getRegistration };
