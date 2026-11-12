@@ -1,15 +1,9 @@
+import { Router } from "express";
+import { registerHackathon } from "./registration.controller.js";
+import authMiddleware from "../../middlewares/auth.middleware.js";
 
-import express from "express";
-// import {
-//   registerHackathon,
-//   getMyEntry,
-//   deleteHackathonEntry,
-// } from "./hackathon.controller.js";
+const registrationRoute = Router();
 
-const hackathonRouter = express.Router();
+registrationRoute.post("/register", authMiddleware, registerHackathon);
 
-hackathonRouter.post("/register", registerHackathon);
-// hackathonRouter.get("/my-entry", getMyEntry);
-// hackathonRouter.delete("/:id", deleteHackathonEntry);
-
-export default hackathonRouter;
+export default registrationRoute;

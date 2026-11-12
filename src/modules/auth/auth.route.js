@@ -16,5 +16,6 @@ authRouter.post("/verify-otp", verifyEmailOtp);
 authRouter.post("/login", login);
 authRouter.get("/me", authMiddleware, getMe);
 
-authRouter.get("/users", getUsers);
+// authRouter.get("/users" , authMiddleware, getUsers);
+
 export default authRouter;
