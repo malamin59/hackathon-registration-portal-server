@@ -4,7 +4,6 @@ import connectDB from "../src/config/db.js";
 export default async function handler(req, res) {
   try {
     await connectDB();
-
     return app(req, res);
   } catch (error) {
     console.error("Production API Error:", error);
