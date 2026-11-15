@@ -1,7 +1,11 @@
 import User from "./auth.model.js";
-import { getAllUsers, loginUser, verifyOtp } from "./auth.service.js";
-
-import { signupUser } from "./auth.service.js";
+import {
+  signupUser,
+  getAllUsers,
+  loginUser,
+  verifyOtp,
+  resendOtp,
+} from "./auth.service.js";
 
 const signup = async (req, res, next) => {
   try {
@@ -30,6 +34,26 @@ const verifyEmailOtp = async (req, res, next) => {
     res.status(200).json({
       success: true,
       message: "Email verified successfully",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const resendEmailOtp = async (req, res, next) => {
+  try {
+    const { userId } = req.body;
+
+    if (!userId) {
+      throw new Error("User ID is required");
+    }
+
+    const result = await resendOtp(userId);
+
+    res.status(200).json({
+      success: true,
+      message: "OTP resent successfully",
       data: result,
     });
   } catch (error) {
@@ -92,4 +116,4 @@ const getUsers = async (req, res) => {
   }
 };
 
-export { signup, getUsers, verifyEmailOtp, login, getMe };
+export { signup, getUsers, verifyEmailOtp, login, getMe, resendEmailOtp };

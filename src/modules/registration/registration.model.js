@@ -8,6 +8,7 @@ const registrationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
+      unique: true,
     },
 
     // Personal Information
@@ -124,8 +125,7 @@ const registrationSchema = new mongoose.Schema(
       default: [],
       validate: {
         validator: function (members) {
-          const expectedCount = this.teamSize === 1 ? 0 : this.teamSize;
-          return members.length === expectedCount;
+          return members.length === this.teamSize - 1;
         },
         message: "Team members count must match team size.",
       },

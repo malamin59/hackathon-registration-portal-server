@@ -47,30 +47,30 @@ Phase 5 — Hackathon Registration
 - [x] Create Registration Model
 - [x] Registration API
 - [x] Get My Registration API
-- [] Get All Registrations API (if required)
-- [] Update Registration API
-- [] Delete Registration API
-- [] Validate Registration Data
-- [] Prevent Duplicate Registration
+- [x] Get All Registrations API (if required)
+- [x] Update Registration API
+- [x] Delete Registration API
+- [x] Validate Registration Data
+- [x] Prevent Duplicate Registration
 
 Phase 6 — Security & Validation
-- [] Request Validation
-- [] CORS Configuration
-- [] Helmet Security Headers
-- [] Rate Limiting
-- [] Secure Environment Variables
-- [] Consistent API Response Format
-- [] Handle Unexpected Errors
+- [x] Request Validation
+- [x] CORS Configuration
+- [x] Helmet Security Headers
+- [x] Rate Limiting
+- [x] Secure Environment Variables
+- [x] Consistent API Response Format
+- [x] Handle Unexpected Errors
 
 Phase 7 — API Testing
-- [] Test Signup
-- [] Test OTP Verification
-- [] Test Login
-- [] Test JWT Authentication
-- [] Test Registration CRUD
-- [] Test Invalid Requests
-- [] Test Unauthorized Requests
-- [] Test Database Errors
+- [x] Test Signup
+- [x] Test OTP Verification
+- [x] Test Login
+- [x] Test JWT Authentication
+- [x] Test Registration CRUD
+- [x] Test Invalid Requests
+- [x] Test Unauthorized Requests
+- [x] Test Database Errors
 
 Phase 8 — Deployment & Submission
 - [] Prepare Production Environment

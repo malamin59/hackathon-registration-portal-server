@@ -3,6 +3,7 @@ import User from "./auth.model.js";
 import crypto from "crypto";
 import { sendEmail } from "./email.service.js";
 import jwt from "jsonwebtoken";
+import { otpVerificationEmail } from "./auth.email.js";
 const signupUser = async (userData) => {
   const { fullName, email, password, confirmPassword } = userData;
 
@@ -46,13 +47,8 @@ const signupUser = async (userData) => {
   // Send OTP Email
   await sendEmail(
     user.email,
-    "Email Verification OTP",
-    `
-      <h2>Email Verification</h2>
-      <p>Your OTP is:</p>
-      <h1>${otp}</h1>
-      <p>This OTP expires in 10 minutes.</p>
-    `,
+    "Verify Your Email | Code-a-Nova",
+    otpVerificationEmail(otp),
   );
 
   // Return response
@@ -107,6 +103,38 @@ const verifyOtp = async (userId, otp) => {
   };
 };
 
+const resendOtp = async (userId) => {
+  const user = await User.findById(userId);
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  if (user.isVerified) {
+    throw new Error("Email already verified");
+  }
+  const otp = crypto.randomInt(100000, 1000000).toString();
+  const otpHash = await bcrypt.hash(otp, 10);
+
+  user.otpHash = otpHash;
+  user.otpExpiresAt = new Date(Date.now() + 10 * 60 * 1000);
+
+  await user.save();
+
+  // Send new OTP email
+  await sendEmail(
+    user.email,
+    "Verify Your Email | Code-a-Nova",
+    otpVerificationEmail(otp),
+  );
+
+  return {
+    userId: user._id,
+    email: user.email,
+    message: "A new OTP has been sent to your email.",
+  };
+};
+
 const getAllUsers = async () => {
   const users = await User.find().select("fullName email isVerified createdAt");
 
@@ -150,4 +178,4 @@ const loginUser = async ({ email, password }) => {
   };
 };
 
-export { signupUser, getAllUsers, verifyOtp, loginUser };
+export { signupUser, getAllUsers, verifyOtp, loginUser, resendOtp };

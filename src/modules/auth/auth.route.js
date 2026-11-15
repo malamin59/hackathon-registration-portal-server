@@ -5,6 +5,7 @@ import {
   verifyEmailOtp,
   login,
   getMe,
+  resendEmailOtp,
 } from "./auth.controller.js";
 import authMiddleware from "../../middlewares/auth.middleware.js";
 
@@ -13,6 +14,7 @@ const authRouter = express.Router();
 // Signup
 authRouter.post("/signup", signup);
 authRouter.post("/verify-otp", verifyEmailOtp);
+authRouter.post("/resend-otp", resendEmailOtp);
 authRouter.post("/login", login);
 authRouter.get("/me", authMiddleware, getMe);
 

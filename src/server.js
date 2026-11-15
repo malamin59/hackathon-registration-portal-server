@@ -11,7 +11,10 @@ const startServer = async () => {
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
-       verifyEmailConnection();
+
+      verifyEmailConnection().catch((error) => {
+        console.error("Email connection verification failed:", error.message);
+      });
     });
   } catch (error) {
     console.error("Server startup failed:", error.message);

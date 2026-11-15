@@ -1,22 +1,36 @@
 
 import express from "express";
 import router from "./routes/index.js";
-// import emailRouter from "./routes/email.route.js";
+import errorMiddleware from "./middlewares/error.middleware.js";
+import cors from "cors";
+
 const app = express();
 
-// Middleware
+const allowedOrigins = [
+  "http://localhost:5173",
+  process.env.CLIENT_URL,
+].filter(Boolean);
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  }),
+);
+
 app.use(express.json());
 
-// Routes
 app.use("/api", router);
-// app.use("/api/email", emailRouter);
 
-// Health check route
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
     message: "Hackathon Registration Server is Running!",
   });
 });
+
+app.use(errorMiddleware);
 
 export default app;
