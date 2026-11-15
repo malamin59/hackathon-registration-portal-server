@@ -1,8 +1,17 @@
 # Hackathon Registration Portal — Backend
 
-A full-stack Hackathon Registration Portal backend built with **Node.js, Express.js, MongoDB, and Mongoose**. It provides secure authentication, email OTP verification, JWT-based authorization, and hackathon registration management.
+A secure and scalable Hackathon Registration Portal backend built with **Node.js, Express.js, MongoDB, and Mongoose**. It provides secure user authentication, email OTP verification, JWT-based authorization, and hackathon registration management.
 
-## 🚀 Features
+## 🚀 Live API
+
+**Backend:** https://hackathon-registration-murex.vercel.app/
+
+**API Base URL:**
+```text
+https://hackathon-registration-murex.vercel.app/api
+```
+
+## ✨ Features
 
 - **User Authentication:** Secure signup and login functionality.
 - **Email Verification:** Custom 6-digit OTP verification using Nodemailer.
@@ -56,7 +65,7 @@ server/
 │   ├── app.js
 │   └── server.js
 │
-├── .env
+├── .env.example
 ├── .gitignore
 ├── package.json
 ├── pnpm-lock.yaml
@@ -68,13 +77,13 @@ server/
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-backend-repository-url>
+git clone <your-github-repository-url>
 ```
 
 ### 2. Navigate to the Server Directory
 
 ```bash
-cd server
+cd hackathon-registration-portal/server
 ```
 
 ### 3. Install Dependencies
@@ -86,6 +95,8 @@ pnpm install
 ### 4. Configure Environment Variables
 
 Create a `.env` file in the server root directory.
+
+Use the following environment variable configuration:
 
 ```env
 PORT=5000
@@ -101,7 +112,7 @@ EMAIL_PASS=your_email_app_password
 CLIENT_URL=http://localhost:5173
 ```
 
-**Important:** Never commit your `.env` file or expose sensitive credentials publicly.
+**Important:** Never commit your `.env` file or expose sensitive credentials publicly. Use `.env.example` as a reference for the required environment variables.
 
 ### 5. Start the Development Server
 
@@ -115,12 +126,18 @@ The backend will run at:
 http://localhost:5000
 ```
 
-## 🔗 API Endpoints
+## 🔗 API Documentation
 
-Base URL:
+**Base URL (Local):**
 
 ```text
 http://localhost:5000/api
+```
+
+**Base URL (Production):**
+
+```text
+https://hackathon-registration-murex.vercel.app/api
 ```
 
 ### Authentication Routes
@@ -133,10 +150,10 @@ http://localhost:5000/api
 
 ### User Routes
 
-| Endpoint | Description |
-|---|---|
-| `/user/me` | Get authenticated user profile |
-| `/user/update` | Update user profile |
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/user/me` | Get authenticated user profile |
+| PATCH | `/user/update` | Update user profile |
 
 ### Hackathon Routes
 
@@ -144,13 +161,13 @@ http://localhost:5000/api
 |---|---|---|
 | POST | `/hackathon/register` | Register for a hackathon |
 | GET | `/hackathon/my-entry` | Get user's registration |
-| `/hackathon/:id` | Get hackathon details |
+| GET | `/hackathon/:id` | Get hackathon details |
 
-*Note: HTTP methods for the user and hackathon detail endpoints should match their actual route definitions.*
+*Note: Ensure the HTTP methods above match the actual route definitions in your backend.*
 
 ## 🔐 Authentication
 
-This backend uses JWT-based authentication.
+This backend uses JWT-based authentication to protect private API endpoints.
 
 After successful login, the server generates a JWT token.
 
@@ -166,7 +183,7 @@ Passwords are securely hashed using bcryptjs before being stored in MongoDB.
 
 The registration process includes email verification using a custom 6-digit OTP.
 
-**Verification Flow:**
+### Verification Flow
 
 1. User submits signup information.
 2. Backend validates the submitted information.
@@ -186,9 +203,13 @@ The application stores user information and hackathon registration data.
 
 The backend is deployed using **Vercel Serverless Functions**.
 
-Production environment variables must be configured in the Vercel project settings.
+**Production URL:**
 
-Important configuration:
+https://hackathon-registration-murex.vercel.app/
+
+Production environment variables must be configured in Vercel Project Settings.
+
+Required environment variables:
 
 - `MONGODB_URL`
 - `JWT_SECRET`
@@ -218,9 +239,9 @@ vercel --prod
 
 **Al Amin Patwary**
 
-- GitHub: https://github.com/malamin59
-- Portfolio: https://alamin-15553.web.app/
-- LinkedIn: https://www.linkedin.com/in/alamin-epb
+- **GitHub:** https://github.com/malamin59
+- **Portfolio:** https://alamin-15553.web.app/
+- **LinkedIn:** https://www.linkedin.com/in/alamin-epb
 
 ---
 
