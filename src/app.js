@@ -1,4 +1,3 @@
-
 import express from "express";
 import router from "./routes/index.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
@@ -8,6 +7,7 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://codeanova-hackathon-portal.vercel.app",
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
